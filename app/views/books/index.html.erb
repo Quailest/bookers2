@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-3">
+    <div class="col-md-3">
     <%=form_with model:Book.new, local:true do |f| %>
     <% if @book.errors.any? %>
      <%= @book.errors.count %>error prohibited this obj from being saved:
@@ -13,7 +13,7 @@
 
     <h2>User info</h2>
 
-    <%= image_tag @user.get_profile_image("63x63") %>
+    <%= image_tag @user.get_profile_image("60x60") %>
 
     <table class="table">
      <tbody>
@@ -55,7 +55,7 @@
      </div>
     </div>
 
-    <div class="col-lg-8 offset-md-1">
+    <div class="col-md-8 offset-md-1">
       <h2>Books</h2>
       <table class="table table-hover table-inverse">
        <thead>
@@ -68,7 +68,11 @@
       <tbody>
       <% @books.each do |book| %>
         <tr>
-          <th><%= image_tag book.user.get_profile_image("40x40") %></th>
+          <th>
+           <%= link_to user_path(book.user) do %>
+           <%= image_tag book.user.get_profile_image("60x60") %>
+           <% end %>
+           </th>
           <th><%= link_to book.title, book_path(book) %></th>
           <th><%= book.body %></th>
         </tr>

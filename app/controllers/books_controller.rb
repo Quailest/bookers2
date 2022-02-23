@@ -15,7 +15,7 @@ before_action :authenticate_user!
     else
       @books = Book.all
       @user = current_user
-      render 'index'
+      render 'index', notice: 'errors prohibited this obj from being saved:'
     end
   end
 
@@ -29,8 +29,10 @@ before_action :authenticate_user!
 
   def edit
     @book = Book.find(params[:id])
-    if @book.user != current_user
-      redirect_to "/books"
+    if @book.user == current_user
+     render 'edit'
+    else
+      redirect_to books_path
     end
   end
 

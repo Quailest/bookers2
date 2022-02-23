@@ -9,11 +9,10 @@
 
 <h2>User info</h2>
 
-<%= image_tag @user.get_profile_image("63x63") %>
+<%= image_tag @user.get_profile_image("100x100") %>
 
   <table class="table">
     <tbody>
-      <tr></tr>
       <tr>
         <th>name</th>
         <th><%= @user.name %></th>
@@ -26,11 +25,11 @@
   </table>
 
   <div class="row">
-    <% if @user.id == current_user.id %>
-      <%= link_to edit_user_path(current_user), class:'btn btn-outline-secondary btn-block' do %>
+
+      <%= link_to edit_user_path(@user), class:'btn btn-outline-secondary btn-block' do %>
         <i class="fas fa-user-cog"></i>
       <% end %>
-    <% end %>
+
   </div>
 
 

@@ -23,6 +23,7 @@ class UsersController < ApplicationController
     @users =User.all
     @book = Book.new
     @user = current_user
+    @newbook = Book.new
   end
 
   def update
